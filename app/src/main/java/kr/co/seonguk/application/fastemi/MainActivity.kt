@@ -3,6 +3,7 @@ package kr.co.seonguk.application.fastemi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.view.isVisible
 import kr.co.seonguk.application.fastemi.databinding.ActivityMainBinding
 
@@ -27,6 +28,10 @@ class MainActivity : AppCompatActivity() {
                 val newIntent = Intent(this@MainActivity, InputActivity::class.java)
                 startActivity(newIntent)
             }
+
+            buttonDelete.setOnClickListener {
+                deleteData()
+            }
         }
     }
 
@@ -48,5 +53,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun deleteData(){
+        getSharedPreferences(USER_INFO, MODE_PRIVATE).edit().apply{
+            clear()
+            apply()
+            getData()
+        }
+        Toast.makeText(this, "초기화를 완료했습니다", Toast.LENGTH_SHORT).show()
     }
 }
