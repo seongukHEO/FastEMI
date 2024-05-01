@@ -3,6 +3,7 @@ package kr.co.seonguk.application.fastemi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.isVisible
 import kr.co.seonguk.application.fastemi.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,11 +16,36 @@ class MainActivity : AppCompatActivity() {
         settingEvent()
     }
 
+    override fun onResume() {
+        super.onResume()
+        getData()
+    }
+
     fun settingEvent(){
         with(binding){
             floatingActionButton.setOnClickListener {
                 val newIntent = Intent(this@MainActivity, InputActivity::class.java)
                 startActivity(newIntent)
+            }
+        }
+    }
+
+    private fun getData(){
+        binding.apply {
+            with(getSharedPreferences(USER_INFO, MODE_PRIVATE)){
+                nameValueTextView.text = getString(NAME, "")
+                birthDateValueTextView.text = getString(BIRTH_DATE, "")
+                bloodTypeValueTextView.text = getString(BLOOD_TYPE, "")
+                EmergencyValueTextView.text = getString(EMERGENCY_CONTACT, "")
+                val warning = getString(WARNING, "")
+                if (warning.isNullOrEmpty()){
+                    notandumValueTextView.isVisible = false
+                    textView5.isVisible = false
+                }else{
+                    notandumValueTextView.isVisible = true
+                    textView5.isVisible = true
+                    notandumValueTextView.text = getString(WARNING, "")
+                }
             }
         }
     }

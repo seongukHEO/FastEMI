@@ -6,12 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".InputActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="36dp"
+        android:clickable="true"
+        android:src="@drawable/baseline_save_alt_24"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/textView"
+        style="@style/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="이름"
-        style="@style/Title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,8 +55,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
-        android:text="0000-00-00"
         android:gravity="center"
+        android:text="0000-00-00"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -54,10 +66,10 @@
         android:id="@+id/bithdateImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/nameValueEditText"
-        app:layout_constraintTop_toTopOf="@id/birthDateValueEditText"
+        android:src="@drawable/calendar_month_24px"
         app:layout_constraintBottom_toBottomOf="@id/birthDateValueEditText"
-        android:src="@drawable/calendar_month_24px"/>
+        app:layout_constraintEnd_toEndOf="@id/nameValueEditText"
+        app:layout_constraintTop_toTopOf="@id/birthDateValueEditText" />
 
     <TextView
         android:id="@+id/textView3"
@@ -153,6 +165,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
         android:hint="주의사항"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
@@ -163,5 +176,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/bithdateLayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="birthDateValueEditText"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
