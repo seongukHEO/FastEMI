@@ -20,10 +20,10 @@
 
     <TextView
         android:id="@+id/textView"
+        style="@style/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="이름"
-        style="@style/Title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,9 +34,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
-        android:text="허성욱"
         android:ellipsize="end"
         android:maxLines="1"
+        android:text="허성욱"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -101,13 +101,23 @@
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="50dp"
         android:text="010-0000-0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/EmergencyValueTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/EmergencyValueTextView"
+        app:srcCompat="@drawable/baseline_add_call_24" />
 
     <TextView
         android:id="@+id/textView5"
@@ -148,6 +158,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/baseline_delete_forever_24" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/emergencyContactLayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="EmergencyValueTextView"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

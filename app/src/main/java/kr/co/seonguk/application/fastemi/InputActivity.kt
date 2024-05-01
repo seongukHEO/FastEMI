@@ -46,6 +46,8 @@ class InputActivity : AppCompatActivity() {
                 saveData()
                 finish()
             }
+
+
         }
     }
 

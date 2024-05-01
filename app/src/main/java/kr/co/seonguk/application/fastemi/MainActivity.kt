@@ -1,6 +1,7 @@
 package kr.co.seonguk.application.fastemi
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -25,12 +26,23 @@ class MainActivity : AppCompatActivity() {
     fun settingEvent(){
         with(binding){
             floatingActionButton.setOnClickListener {
+                //명시적 인텐트
                 val newIntent = Intent(this@MainActivity, InputActivity::class.java)
                 startActivity(newIntent)
             }
 
             buttonDelete.setOnClickListener {
                 deleteData()
+            }
+
+            emergencyContactLayer.setOnClickListener {
+                //암시적 인텐트
+                Intent(Intent.ACTION_VIEW).apply {
+                    val phoneNumber = binding.EmergencyValueTextView.text.toString()
+                        .replace("-", "")
+                    data = Uri.parse("tel:$phoneNumber")
+                    startActivity(this)
+                }
             }
         }
     }
